@@ -20,6 +20,7 @@ from mesa.visualization.modules import CanvasGrid
 from mesa.visualization.ModularVisualization import ModularServer
 import networkx as nx
 from itertools import combinations
+from elfarol.Attendee import Attendee
 
 
 # In[ ]:
@@ -68,7 +69,7 @@ class EF_Model(Model):
         for i in range(self.num_agents):
             #threshold=random threshold
             #memory=random memory size
-            a = Attendee1(i, self, nb_strategies)
+            a = Attendee(i, self, nb_strategies)
             self.schedule.add(a)
             
             #add the condition that agents start at home: in this model, as there are no visuals, it doesn't really matter where they are as going to the bar is only defined by self.attend

@@ -23,6 +23,9 @@ from itertools import combinations
 
 
 # In[ ]:
+def compute_attendance(model):
+    return  sum([1 for a in model.schedule.agents if a.attend == 1])
+
 
 
 def complete_attendance(matrix_attendance):
@@ -33,7 +36,16 @@ def complete_attendance(matrix_attendance):
     return compare
 
 
-# In[ ]:
+class Strategy():
+    def __init__(self, memory_size, constant):
+        self.weights=np.random.uniform(-1,1,memory_size)
+        self.constant=constant
+        self.errors=[]
+        self.scores=[]
+    def forecast(self,N,memory):
+        predict_memory=np.sum(self.weights*memory) + self.constant*N
+        
+        return predict_memory
 
 
 class Attendee(Agent):
